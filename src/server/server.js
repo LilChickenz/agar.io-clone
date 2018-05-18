@@ -106,14 +106,14 @@ function movePlayer(player) {
         var deg = Math.atan2(target.y, target.x);
         var slowDown = 1;
         if(player.cells[i].speed <= 6.25) {
-            slowDown = util.log(player.cells[i].mass, c.slowBase) - initMassLog + 1;
+            slowDown = util.log(player.cells[i].mass, c.slowBase) - initMassLog + .5;
         }
 
         var deltaY = player.cells[i].speed * Math.sin(deg)/ slowDown;
         var deltaX = player.cells[i].speed * Math.cos(deg)/ slowDown;
 
         if(player.cells[i].speed > 6.25) {
-            player.cells[i].speed -= 0.5;
+            player.cells[i].speed -= 1;
         }
         if (dist < (50 + player.cells[i].radius)) {
             deltaY *= dist / (50 + player.cells[i].radius);
